@@ -68,17 +68,17 @@ issueForm.addEventListener("submit", (event) => {
   issueForm.reset();
   priorityInput.value = "Medium";
   formMessage.textContent = "Issue added to the local browser session.";
+
   renderIssues();
-});
 
-function toggleIssueStatus(issueId) {
-  const issue = issues.find((item) => item.id === issueId);
+  function toggleIssueStatus(issueId) {
+    const issue = issues.find((item) => item.id === issueId);
 
-  if (!issue) {
-    console.error("Issue not found:", issueId);
-    return;
+    if (!issue) {
+      console.error("Issue not found:", issueId);
+      return;
+    }
+
+    issue.status = issue.status === "Open" ? "Resolved" : "Open";
   }
-
-  issue.status = issue.status === "Open" ? "Resolved" : "Open";
-}
-renderIssues();
+});
